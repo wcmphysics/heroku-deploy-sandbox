@@ -87,4 +87,5 @@ async def receive_preprocessed_dataframe(dataframe_as_json : str):
 
 # run the app
 if __name__ == '__main__':
-    uvicorn.run(app, port=9696)
+    uvicorn.run(app)
+    #uvicorn.run(app, port=9696)
