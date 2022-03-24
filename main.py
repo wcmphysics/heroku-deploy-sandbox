@@ -2,11 +2,13 @@
 import pickle
 import re
 from fastapi import FastAPI, File, UploadFile
-from matplotlib.pyplot import axis
+#from matplotlib.pyplot import axis
 import uvicorn
 import pandas as pd
 import numpy as np
 import mlflow
+import json
+#import requests
 
 #from keras.models import Sequential, load_model
 from mlflow.sklearn import load_model
@@ -52,16 +54,27 @@ async def receive_dataframe(dataframe_as_json : str):
     df = pd.DataFrame.read_json(dataframe_as_json)
     return { "Failure" : run_predict(df)[:,1]}
 
+"""
 @app.post("/uploadfile")
-async def create_upload_file(data: UploadFile = File(...)):
+async def create_upload_file(data: UploadFile = File(...) ):
     #Prints result in cmd – verification purpose
     print("The file: ", data.filename, "is uploaded")
-    df = pd.read_csv(data)
+    json_data = json.load(data.file)
+    print("json transformed 1")
+    #json_data = json.loads(data.file.read())
+    #print("json transformed 2")
+    df = pd.read_json(json_data)
+    print()
+    #df = pd.read_csv(data)
     #Sends server the name of the file as a response
     return {"Failure": run_predict(df)}
 
 
+@app.post("/dummypath")
+async def get_body(request: Request):
+    return await request.json()
 
+"""
 
 
 
