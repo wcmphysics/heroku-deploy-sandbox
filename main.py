@@ -53,7 +53,7 @@ def get_root():
 
 @app.post("/receive_dataframe")
 async def receive_dataframe(dataframe_as_json : str):
-    df = pd.DataFrame.read_json(dataframe_as_json)
+    df = pd.read_json(dataframe_as_json)
     return { "Failure" : run_predict(df)[:,1]}
 
 """
