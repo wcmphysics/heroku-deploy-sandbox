@@ -84,7 +84,7 @@ async def get_body(request: Request):
 
 @app.post("/receive_preprocessed_dataframe")
 async def receive_preprocessed_dataframe(dataframe_as_json : str):
-    df = pd.DataFrame.read_json(dataframe_as_json)
+    df = pd.read_json(dataframe_as_json)
     return 0
 
 # run the app
