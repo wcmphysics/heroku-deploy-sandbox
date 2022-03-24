@@ -34,7 +34,7 @@ app = FastAPI()
 
 # direct reading
 """
-df = pd.read_csv("df_heroku_test.csv")
+df = pd.read_csv("https://raw.githubusercontent.com/wcmphysics/heroku-deploy-sandbox/deployment/df_heroku_test.csv")
 y_pred = run_predict(df)[:,1]
 print(y_pred)
 """
@@ -52,9 +52,9 @@ def get_root():
 	return {'message': 'Welcome to the hdd failure prediction API'}
 
 #@app.post("/receive_dataframe")
-#async def receive_dataframe(dataframe_as_json : str):
-#    df = pd.DataFrame.read_json(dataframe_as_json)
-#    return { "Failure" : run_predict(df)[:,1]}
+async def receive_dataframe(dataframe_as_json : str):
+    df = pd.DataFrame.read_json(dataframe_as_json)
+    return { "Failure" : run_predict(df)[:,1]}
 
 """
 @app.post("/uploadfile")
