@@ -1,0 +1,10 @@
+mlflow
+cffi==1.15.0
+cloudpickle==2.0.0
+defusedxml==0.7.1
+pillow==9.0.1
+psutil==5.9.0
+pydot==1.4.2
+scikit-learn==1.0.2
+tensorflow-macos==2.8.0
+xgboost==1.5.2
