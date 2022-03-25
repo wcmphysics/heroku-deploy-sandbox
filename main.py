@@ -239,8 +239,8 @@ def get_root():
 async def receive_dataframe(item: Item):
     df = pd.DataFrame(item.dict())
     #df = pd.read_json(dataframe_as_json)
-    #return { "Failure" : run_predict(df)[:,1]}
-    return { "Test Message" : "Hello World"}
+    return { "Failure" : run_predict(df)[:,1]}
+    #return { "Test Message" : "Hello World"}
 
 
 
