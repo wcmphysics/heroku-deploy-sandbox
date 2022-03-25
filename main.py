@@ -23,7 +23,7 @@ app = FastAPI()
 
 
 class Item(BaseModel):
-    date : dict
+    date: dict
     serial_number: dict
     model: dict
     capacity_bytes: dict
@@ -236,8 +236,8 @@ def get_root():
 	return {'message': 'Welcome to the hdd failure prediction API'}
 
 @app.post("/receive_dataframe")
-async def receive_dataframe(dataframe_as_json : Item):
-    df = pd.DataFrame(dataframe_as_json.dict())
+async def receive_dataframe(item: Item):
+    df = pd.DataFrame(item.dict())
     #df = pd.read_json(dataframe_as_json)
     #return { "Failure" : run_predict(df)[:,1]}
     return { "Test Message" : "Hello World"}
