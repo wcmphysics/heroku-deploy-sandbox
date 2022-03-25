@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 import warnings
 import os
-from mlflow.sklearn import load_model
+#from mlflow.sklearn import load_model
 
 from src.data.hdd_preprocessing import load_preprocess_testdata, preprocess_testdata
 from src.features.feature_engineering import hdd_preprocessor, log_transformer
@@ -18,8 +18,9 @@ def __get_data(df):
     return X_test
 
 def __get_model():
-    model_path = "models/linear"
-    model = load_model(model_path)
+    model_path = "models/deployment_xgb/model.pkl"
+    model = pickle.load(open(model_path, 'rb'))
+    #model = load_model(model_path)
     return model
 
 def run_predict(df):

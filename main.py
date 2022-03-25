@@ -217,11 +217,11 @@ class Item(BaseModel):
 
 
 # direct reading
-"""
-df = pd.read_csv("https://raw.githubusercontent.com/wcmphysics/heroku-deploy-sandbox/deployment/df_heroku_test.csv")
-y_pred = run_predict(df)[:,1]
-print(y_pred)
-"""
+
+#df = pd.read_csv("df_heroku_test.csv")
+#y_pred = run_predict(df)[:,1]
+#print(type(y_pred), list(y_pred))
+
 
 """
 def predict_failure(model, X_test, threshold=0.0871712944):
@@ -242,16 +242,6 @@ async def receive_dataframe(item: Item):
     return { "Failure" : list(run_predict(df)[:,1])}
     #return { "Test Message" : "Hello World"}
 
-
-
-
-
-
-
-@app.post("/receive_preprocessed_dataframe")
-async def receive_preprocessed_dataframe(dataframe_as_json : str):
-    df = pd.read_json(dataframe_as_json)
-    return 0
 
 # run the app
 if __name__ == '__main__':
